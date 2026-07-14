@@ -12,7 +12,7 @@ The `config` package contains all application configuration classes required to 
 - Set up Swagger/OpenAPI documentation (if enabled).
 - Configure JSON serialization and deserialization.
 - Manage environment-specific properties.
-- Register beans required across the application.
+- Register beans required across is the application.
 - Configure application startup settings.
 - Support Docker deployment configurations.
 - Centralize reusable application configurations.
