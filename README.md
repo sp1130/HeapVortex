@@ -15,7 +15,7 @@ DTOs help improve security, reduce unnecessary data exposure, and provide struct
 
 **HeapVortex – 3D JVM Memory Leak Profiler**
 
-HeapVortex is an advanced Spring Boot application that monitors JVM memory usage, captures heap dumps, analyzes object references, detects memory leaks, and streams live JVM telemetry to a React + Three.js frontend.
+HeapVortex is the an advanced Spring Boot application that monitors JVM memory usage, captures heap dumps, analyzes object references, detects memory leaks, and streams live JVM telemetry to a React + Three.js frontend.
 
 ---
 
