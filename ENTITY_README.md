@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-The **Entity Layer** represents the core domain model of the HeapVortex application. Entity classes are mapped directly to database tables using **Spring Data JPA** and **Hibernate**. They store information related to JVM processes, heap dumps, memory statistics, garbage collection events, and heap analysis results.
+The Entity represents the core domain model of the HeapVortex application. Entity classes are mapped directly to database tables using **Spring Data JPA** and **Hibernate**. They store information related to JVM processes, heap dumps, memory statistics, garbage collection events, and heap analysis results.
 
 The Entity layer acts as the bridge between the application and the database, ensuring persistent storage and retrieval of application data.
 
