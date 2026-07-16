@@ -9,7 +9,7 @@ The `config` package contains all application configuration classes required to 
 - Configure Cross-Origin Resource Sharing (CORS) to allow secure communication between the React frontend and Spring Boot backend.
 - Define application-wide configuration settings.
 - Configure WebSocket connections for real-time communication.
-- Set up Swagger/OpenAPI documentation (if enabled).
+- Set up Swagger/OpenAPI is the documentation (if enabled).
 - Configure JSON serialization and deserialization.
 - Manage environment-specific properties.
 - Register beans required across is the application.
