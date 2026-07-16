@@ -1,137 +1,74 @@
-# HeapVortex - Parser Module
+package com.heapvortex.parser;
 
-## 📌 Overview
+import org.eclipse.mat.snapshot.ISnapshot;
+import org.eclipse.mat.snapshot.SnapshotFactory;
+import org.eclipse.mat.snapshot.model.IObject;
+import org.eclipse.mat.util.VoidProgressListener;
 
-The **Parser Module** is responsible for reading and processing Java Heap Dump (`.hprof`) files generated from running JVM applications. It extracts object information, memory usage, reference chains, and Garbage Collection (GC) Roots to support memory leak detection and visualization.
+import java.io.File;
 
-This module acts as the core processing engine of HeapVortex by converting raw heap dump data into structured objects that can be analyzed and displayed through the application.
+public class HeapDumpParser {
 
----
+    public static void main(String[] args) {
 
-## 🎯 Objectives
+        // Change this path to your heap dump file
+        String heapDumpPath = "D:/heapdump.hprof";
 
-- Read and parse `.hprof` heap dump files.
-- Extract JVM object information.
-- Identify object reference relationships.
-- Calculate shallow and retained memory sizes.
-- Detect Garbage Collection (GC) Roots.
-- Generate structured data for visualization.
-- Support memory leak analysis.
+        try {
 
----
+            File file = new File(heapDumpPath);
 
-## 📂 Package Structure
+            if (!file.exists()) {
+                System.out.println("Heap dump file not found!");
+                return;
+            }
 
-```
-com.heapvortex.parser
-│
-├── HeapDumpParser.java
-├── ObjectParser.java
-├── ReferenceParser.java
-├── GCParser.java
-├── MemoryParser.java
-└── ParserConfiguration.java
-```
+            System.out.println("======================================");
+            System.out.println("       HEAPVORTEX PARSER STARTED      ");
+            System.out.println("======================================");
 
----
+            // Open Heap Dump
+            ISnapshot snapshot = SnapshotFactory.openSnapshot(
+                    file,
+                    new VoidProgressListener()
+            );
 
-## ⚙️ Responsibilities
+            System.out.println("Heap Dump Loaded Successfully");
+            System.out.println();
 
-- Read heap dump files.
-- Parse JVM object metadata.
-- Extract object references.
-- Analyze memory allocation.
-- Detect unreachable objects.
-- Build object graph data.
-- Send parsed results to the Service Layer.
+            // Display Heap Information
+            System.out.println("Snapshot Information");
+            System.out.println("-----------------------------");
+            System.out.println("Number of GC Roots : " + snapshot.getGCRoots().length);
+            System.out.println();
 
----
+            // Display GC Root Objects
+            System.out.println("GC Root Objects");
+            System.out.println("-----------------------------");
 
-## 🔄 Parser Workflow
+            int[] gcRoots = snapshot.getGCRoots();
 
-```
-Heap Dump (.hprof)
-        │
-        ▼
-HeapDumpParser
-        │
-        ▼
-Object Extraction
-        │
-        ▼
-Reference Analysis
-        │
-        ▼
-GC Root Detection
-        │
-        ▼
-Memory Calculation
-        │
-        ▼
-DTO Conversion
-        │
-        ▼
-Frontend Visualization
-```
+            for (int objectId : gcRoots) {
 
----
+                IObject object = snapshot.getObject(objectId);
 
-## 📋 Key Components
+                System.out.println("Object ID      : " + object.getObjectId());
+                System.out.println("Class Name     : " + object.getClazz().getName());
+                System.out.println("Display Name   : " + object.getDisplayName());
+                System.out.println("Used Heap Size : " + object.getUsedHeapSize());
+                System.out.println("------------------------------------");
+            }
 
-### HeapDumpParser
-- Reads heap dump files.
-- Initializes the parsing process.
+            snapshot.dispose();
 
-### ObjectParser
-- Extracts JVM object information.
-- Identifies object types and class names.
+            System.out.println();
+            System.out.println("Heap Parsing Completed Successfully!");
 
-### ReferenceParser
-- Builds object reference relationships.
-- Creates parent-child object mappings.
+        } catch (Exception e) {
 
-### GCParser
-- Detects Garbage Collection Roots.
-- Finds retained objects.
+            System.out.println("Parser Error : " + e.getMessage());
+            e.printStackTrace();
 
-### MemoryParser
-- Calculates memory usage.
-- Computes shallow and retained sizes.
-
----
-
-## 🛠️ Technologies Used
-
-- Java 21
-- Spring Boot
-- Eclipse Memory Analyzer (MAT)
-- Java I/O
-- Collections Framework
-- Lombok
-
----
-
-## ✅ Features
-
-- Heap dump parsing
-- Object extraction
-- Reference chain analysis
-- GC Root detection
-- Memory usage calculation
-- Leak candidate identification
-- High-performance parsing
-- Clean and modular architecture
-
----
-
-## 📈 Future Enhancements
-
-- Parallel heap parsing
-- Incremental parsing
-- Large heap optimization
-- Export parsed results as JSON
-- Multi-threaded parsing
-- Support for additional heap dump formats
-
----
-
+        }
+    }
+}
