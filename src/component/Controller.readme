@@ -1,0 +1,80 @@
+package com.heapvortex.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/heap")
+@CrossOrigin(origins = "http://localhost:5173")
+public class HeapController {
+
+    @GetMapping("/status")
+    public ResponseEntity<?> getStatus() {
+
+        Map<String, Object> response = new HashMap<>();
+
+        response.put("project", "HeapVortex");
+        response.put("status", "Running");
+        response.put("message", "HeapVortex Backend is Active");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadHeapDump(
+            @RequestParam("file") MultipartFile file) {
+
+        Map<String, Object> response = new HashMap<>();
+
+        if (file.isEmpty()) {
+            response.put("status", "Failed");
+            response.put("message", "Please upload a .hprof file");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        response.put("status", "Success");
+        response.put("fileName", file.getOriginalFilename());
+        response.put("size", file.getSize());
+        response.put("message", "Heap dump uploaded successfully");
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/memory")
+    public ResponseEntity<?> getMemoryUsage() {
+
+        Runtime runtime = Runtime.getRuntime();
+
+        Map<String, Object> memory = new HashMap<>();
+
+        memory.put("TotalMemory", runtime.totalMemory());
+        memory.put("FreeMemory", runtime.freeMemory());
+        memory.put("UsedMemory",
+                runtime.totalMemory() - runtime.freeMemory());
+        memory.put("MaxMemory", runtime.maxMemory());
+
+        return ResponseEntity.ok(memory);
+    }
+
+    @GetMapping("/jvm")
+    public ResponseEntity<?> getJvmInfo() {
+
+        Map<String, Object> jvm = new HashMap<>();
+
+        jvm.put("JavaVersion", System.getProperty("java.version"));
+        jvm.put("JavaVendor", System.getProperty("java.vendor"));
+        jvm.put("OS", System.getProperty("os.name"));
+        jvm.put("Architecture", System.getProperty("os.arch"));
+
+        return ResponseEntity.ok(jvm);
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("HeapVortex Backend is Healthy");
+    }
+}
