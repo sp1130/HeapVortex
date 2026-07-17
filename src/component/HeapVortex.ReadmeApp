@@ -1,0 +1,239 @@
+# HeapVortex - Main Application Component
+
+## Overview
+
+This file serves as the main entry point of the **HeapVortex** application. It combines a real-time 3D heap visualization with an interactive telemetry dashboard, providing users with an immersive JVM memory profiling experience.
+
+The application is built using **React**, **TypeScript**, **React Three Fiber**, **Three.js**, and **Tailwind CSS** to create a modern and responsive interface.
+
+---
+
+## Features
+
+- Full-screen interactive 3D visualization
+- Real-time heap object rendering
+- Orbit camera controls for navigation
+- Dynamic star-field background
+- Realistic lighting effects
+- Live telemetry sidebar
+- JVM connection status indicator
+- Bottom HUD displaying heap statistics
+- Loading indicator while 3D assets initialize
+- Responsive overlay UI using Tailwind CSS
+
+---
+
+## Project Structure
+
+```
+src/
+│
+├── App.tsx
+├── features/
+│   ├── 3d-view/
+│   │   └── components/
+│   │       └── HeapScene.tsx
+│   │
+│   └── telemetry/
+│       └── components/
+│           └── TelemetrySidebar.tsx
+```
+
+---
+
+## Technologies Used
+
+- React
+- TypeScript
+- Three.js
+- React Three Fiber
+- React Drei
+- Tailwind CSS
+
+---
+
+## Component Architecture
+
+### App Component
+
+The `App` component acts as the root container of the application and manages the overall layout.
+
+It consists of three major sections:
+
+### 1. 3D Visualization Layer
+
+Responsible for rendering the interactive JVM heap scene.
+
+Includes:
+
+- Canvas
+- Perspective Camera
+- Orbit Controls
+- Stars Environment
+- Ambient Light
+- Point Light
+- Spot Light
+- HeapScene Component
+
+---
+
+### 2. UI Overlay Layer
+
+Displays interactive dashboard components above the 3D canvas.
+
+Contains:
+
+- Application Header
+- Telemetry Sidebar
+- JVM Agent Status
+- Heap Statistics HUD
+
+---
+
+### 3. Loader
+
+Displays loading progress while the 3D scene initializes.
+
+---
+
+## Layout Strategy
+
+The application uses layered positioning for a clean visualization experience.
+
+```
++-----------------------------------------------------+
+|                  UI Overlay Layer                   |
+|                                                     |
+|  Sidebar      Status Panel        Bottom HUD        |
+|                                                     |
++-----------------------------------------------------+
+
+                ▲
+
++-----------------------------------------------------+
+|                3D Canvas Layer                      |
+|                                                     |
+|        Heap Objects + Camera + Lighting             |
+|                                                     |
++-----------------------------------------------------+
+```
+
+---
+
+## Camera Configuration
+
+| Property | Value |
+|----------|-------|
+| Type | Perspective Camera |
+| Position | (0, 5, 15) |
+| Field of View | 75° |
+
+Users can freely rotate, zoom, and inspect the heap visualization using OrbitControls.
+
+---
+
+## Lighting Setup
+
+The application uses multiple light sources to enhance scene realism.
+
+### Ambient Light
+
+Provides soft illumination across the entire scene.
+
+### Point Light
+
+Simulates a directional light source with shadow support.
+
+### Spot Light
+
+Adds focused illumination to emphasize heap structures.
+
+---
+
+## UI Components
+
+### Telemetry Sidebar
+
+Displays live JVM telemetry information, including:
+
+- Heap usage
+- Memory allocation
+- JVM metrics
+- Performance statistics
+
+---
+
+### Connection Status
+
+Shows the runtime connection state of the JVM Agent.
+
+Example:
+
+```
+Agent Connected: PID 12408
+```
+
+---
+
+### Bottom HUD
+
+Displays quick heap statistics.
+
+Example metrics:
+
+- Total Objects
+- Heap Used
+- GC Pause Time
+
+---
+
+## Reusable Components
+
+### StatItem
+
+A reusable component used for displaying statistics consistently throughout the application.
+
+Properties:
+
+| Prop | Description |
+|------|-------------|
+| label | Metric name |
+| value | Metric value |
+
+Example:
+
+```
+Objects
+12,402
+```
+
+---
+
+## Key Functionalities
+
+- Interactive 3D heap visualization
+- Real-time telemetry monitoring
+- Modern dashboard interface
+- Camera navigation
+- Scene lighting
+- Live JVM status
+- Responsive layout
+- Modular React component architecture
+
+---
+
+## Future Enhancements
+
+- Live JVM agent integration
+- Heap snapshot comparison
+- Object filtering
+- Search functionality
+- Garbage collection animation
+- Memory leak detection
+- Performance timeline
+- Dark/Light themes
+- Object relationship visualization
+
+---
+
+d for educational and learning purposes.
