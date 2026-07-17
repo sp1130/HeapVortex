@@ -5,7 +5,7 @@ HeapVortex – 3D JVM Memory Leak Profiler :- Build a tool that can inspect a ru
 
 ## Overview
 
-The **DTO (Data Transfer Object)** layer in HeapVortex is responsible for transferring data between the backend and frontend while maintaining a clean separation between the API and database entities.
+The **DTO (Data Transfer Object)** layer in HeapVortex is the responsible for transferring data between the backend and frontend while maintaining a clean separation between the API and database entities.
 
 DTOs help improve security, reduce unnecessary data exposure, and provide structured request and response objects for REST APIs and WebSocket communication.
 
