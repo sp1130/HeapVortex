@@ -268,8 +268,3 @@ React Frontend
 - Three.js
 
 ---
-
-
-**Keerthana K**
-
-Advanced Full Stack Java Developer
