@@ -295,4 +295,40 @@ It provides memory statistics that can be displayed on the dashboard.
 - Error handling
 - Loading state
 
+# Memory Service
 
+## Overview
+The Memory Service is responsible for communicating with the backend API to retrieve JVM memory statistics.
+
+## Purpose
+This service acts as a bridge between the frontend and backend by fetching memory-related information.
+
+## Features
+- Fetches JVM memory data from REST API
+- Handles API errors gracefully
+- Returns fallback dummy data during development
+- Easy to reuse across multiple React components
+
+## API Endpoint
+
+GET /api/memory
+
+## Returned Data
+
+```json
+{
+  "usedMemory": 512,
+  "freeMemory": 1024,
+  "totalMemory": 1536,
+  "maxMemory": 2048,
+  "leakStatus": "Normal"
+}
+```
+
+## Future Enhancements
+
+- Axios integration
+- WebSocket support
+- Authentication
+- Retry mechanism
+- Loading and error handling
