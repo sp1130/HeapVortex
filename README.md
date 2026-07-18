@@ -268,6 +268,31 @@ React Frontend
 - Three.js
 
 ---
+# useMemoryData Hook
 
+## Overview
+The `useMemoryData` hook is a custom React hook used to manage JVM memory data in the HeapVortex application.
+
+## Purpose
+It provides memory statistics that can be displayed on the dashboard.
+
+## Returned Data
+- Used Memory
+- Free Memory
+- Total Memory
+- Max Memory
+- Leak Status
+
+## Features
+- Uses React Hooks (`useState` and `useEffect`)
+- Simulates real-time memory updates
+- Easy to connect with backend APIs in the future
+- Reusable across multiple components
+
+## Future Enhancements
+- Fetch live JVM data from backend
+- Support WebSocket updates
+- Error handling
+- Loading state
 
 
