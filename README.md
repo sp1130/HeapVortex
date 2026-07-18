@@ -245,7 +245,7 @@ React Frontend
 
 ## Benefits of DTOs
 
-- Provides a clear separation between entities and API models.
+- Provides a clear separation between entities and Application programming interface models.
 - Prevents direct exposure of database entities.
 - Improves API readability and maintainability.
 - Simplifies request validation.
