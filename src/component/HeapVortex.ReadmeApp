@@ -236,4 +236,49 @@ Objects
 
 ---
 
-d for educational and learning purposes.
+# Assets Directory
+
+This directory contains all the static resources used by the frontend application.
+
+## Folder Structure
+
+```
+assets/
+├── images/
+├── icons/
+├── fonts/
+├── styles/
+└── README.md
+```
+
+## Contents
+
+- **images/** – Application images, illustrations, and logos.
+- **icons/** – SVG and PNG icons used across the UI.
+- **fonts/** – Custom font files used in the project.
+- **styles/** – Global styles, CSS modules, or theme-related files.
+
+## Guidelines
+
+- Use descriptive file names (e.g., `dashboard-banner.png`, `user-avatar.svg`).
+- Optimize images before adding them to reduce bundle size.
+- Store reusable assets only; page-specific assets should be placed near their respective components when appropriate.
+- Remove unused assets regularly to keep the project organized.
+
+## Supported File Types
+
+- Images: `.png`, `.jpg`, `.jpeg`, `.svg`, `.webp`
+- Icons: `.svg`, `.png`
+- Fonts: `.ttf`, `.woff`, `.woff2`
+- Styles: `.css`, `.scss`
+
+## Usage Example
+
+```jsx
+import logo from "../assets/images/logo.png";
+
+function Header() {
+  return <img src={logo} alt="HeapVortex Logo" />;
+}
+```
+
