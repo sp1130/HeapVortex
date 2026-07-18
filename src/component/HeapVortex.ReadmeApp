@@ -282,3 +282,57 @@ function Header() {
 }
 ```
 
+# Utils Directory
+
+## Overview
+
+The `utils` directory contains reusable utility functions and helper modules used throughout the HeapVortex application. These functions perform common operations such as data formatting, validation, calculations, API helpers, and other shared logic to reduce code duplication and improve maintainability.
+
+## Directory Structure
+
+```
+utils/
+├── api.js
+├── validation.js
+├── formatter.js
+├── constants.js
+└── README.md
+```
+
+## Contents
+
+- **api.js** – Contains helper functions for making API requests and handling responses.
+- **validation.js** – Includes functions for validating user input such as email, password, and form fields.
+- **formatter.js** – Provides utilities for formatting dates, numbers, currency, and strings.
+- **constants.js** – Stores reusable constants and configuration values used across the application.
+
+## Usage Example
+
+```javascript
+import { formatDate } from "./formatter";
+import { validateEmail } from "./validation";
+
+const date = formatDate(new Date());
+const isValid = validateEmail("user@example.com");
+
+console.log(date);
+console.log(isValid);
+```
+
+## Best Practices
+
+- Keep utility functions small and reusable.
+- Avoid storing component-specific logic in this folder.
+- Write pure functions whenever possible.
+- Group related helper functions into separate files.
+- Document complex utility functions with comments.
+
+## Benefits
+
+- Promotes code reusability.
+- Reduces code duplication.
+- Improves project organization.
+- Makes the application easier to maintain and scale.
+
+---
+
