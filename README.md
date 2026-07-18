@@ -270,6 +270,4 @@ React Frontend
 ---
 
 
-**Keerthana K**
 
-Advanced Full Stack Java Developer
