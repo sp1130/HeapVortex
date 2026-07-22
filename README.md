@@ -324,11 +324,10 @@ GET /api/memory
   "leakStatus": "Normal"
 }
 ```
-
 ## Future Enhancements
 
-- Axios integration
-- WebSocket support
-- Authentication
-- Retry mechanism
-- Loading and error handling
+- Connect with live backend APIs
+- Add graphical memory usage visualization
+- Implement real-time dashboard updates
+- Generate detailed memory analysis reports
+- Improve UI with responsive design and animations
