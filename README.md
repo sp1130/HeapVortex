@@ -2,13 +2,11 @@
 HeapVortex – 3D JVM Memory Leak Profiler :- Build a tool that can inspect a running Java application and help developers find memory leaks visually.  Instead of looking at thousands of lines of memory reports, developers can see a 3D map of Java objects and immediately identify which objects are consuming memory.
 
 # HeapVortex - DTO Layer
-
 ## Overview
 
 The **DTO (Data Transfer Object)** layer in HeapVortex is responsible for transferring data between the backend and frontend while maintaining a clean separation between the API and database entities.
 
-DTOs help improve security, reduce unnecessary data exposure, and provide structured request and response objects for REST APIs and WebSocket communication.
-
+It acts as an intermediary layer that simplifies communication between different application components and promotes a clean, modular architecture.
 ---
 
 ## Project
