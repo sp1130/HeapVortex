@@ -1,10 +1,10 @@
-package com.heapvortex.backend.websocket;
+package com.heapvortex.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.heapvortex.backend.dto.response.GraphDTO;
-import com.heapvortex.backend.dto.response.LiveTelemetryDTO;
-import com.heapvortex.backend.jmx.JmxTelemetryService;
-import com.heapvortex.backend.service.HeapAnalysisService;
+import com.heapvortex.dto.response.GraphDTO;
+import com.heapvortex.dto.response.LiveTelemetryDTO;
+import com.heapvortex.jmx.JmxTelemetryService;
+import com.heapvortex.service.HeapAnalysisService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
