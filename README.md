@@ -1,6 +1,6 @@
-# HeapVortex
-HeapVortex – 3D JVM Memory Leak Profiler :- Build a tool that can inspect a running Java application and help developers find memory leaks visually.  Instead of looking at thousands of lines of memory reports, developers can see a 3D map of Java objects and immediately identify which objects are consuming memory.
+## HeapVortex – 3D JVM Memory Leak Profiler
 
+HeapVortex is a real-time JVM memory monitoring and visualization tool designed to simplify memory leak detection. Instead of analyzing complex heap dump reports, developers can explore Java objects in a 3D view, making memory analysis faster and more intuitive.
 # HeapVortex - DTO Layer
 ## Overview
 
