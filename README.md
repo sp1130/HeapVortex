@@ -1,14 +1,12 @@
-# HeapVortex
-HeapVortex – 3D JVM Memory Leak Profiler :- Build a tool that can inspect a running Java application and help developers find memory leaks visually.  Instead of looking at thousands of lines of memory reports, developers can see a 3D map of Java objects and immediately identify which objects are consuming memory.
+## HeapVortex – 3D JVM Memory Leak Profiler
 
+HeapVortex is a real-time JVM memory monitoring and visualization tool designed to simplify memory leak detection. Instead of analyzing complex heap dump reports, developers can explore Java objects in a 3D view, making memory analysis faster and more intuitive.
 # HeapVortex - DTO Layer
-
 ## Overview
 
 The **DTO (Data Transfer Object)** layer in HeapVortex is responsible for transferring data between the backend and frontend while maintaining a clean separation between the API and database entities.
 
-DTOs help improve security, reduce unnecessary data exposure, and provide structured request and response objects for REST APIs and WebSocket communication.
-
+It acts as an intermediary layer that simplifies communication between different application components and promotes a clean, modular architecture.
 ---
 
 ## Project
@@ -270,6 +268,66 @@ React Frontend
 - Three.js
 
 ---
+# useMemoryData Hook
 
+## Overview
+The `useMemoryData` hook is a custom React hook used to manage JVM memory data in the HeapVortex application.
 
+## Purpose
+It provides memory statistics that can be displayed on the dashboard.
 
+## Returned Data
+- Used Memory
+- Free Memory
+- Total Memory
+- Max Memory
+- Leak Status
+
+## Features
+- Uses React Hooks (`useState` and `useEffect`)
+- Simulates real-time memory updates
+- Easy to connect with backend APIs in the future
+- Reusable across multiple components
+
+## Future Enhancements
+- Fetch live JVM data from backend
+- Support WebSocket updates
+- Error handling
+- Loading state
+
+# Memory Service
+
+## Overview
+The Memory Service is responsible for communicating with the backend API to retrieve JVM memory statistics.
+
+## Purpose
+This service acts as a bridge between the frontend and backend by fetching memory-related information.
+
+## Features
+- Fetches JVM memory data from REST API
+- Handles API errors gracefully
+- Returns fallback dummy data during development
+- Easy to reuse across multiple React components
+
+## API Endpoint
+
+GET /api/memory
+
+## Returned Data
+
+```json
+{
+  "usedMemory": 512,
+  "freeMemory": 1024,
+  "totalMemory": 1536,
+  "maxMemory": 2048,
+  "leakStatus": "Normal"
+}
+```
+## Future Enhancements
+
+- Connect with live backend APIs
+- Add graphical memory usage visualization
+- Implement real-time dashboard updates
+- Generate detailed memory analysis reports
+- Improve UI with responsive design and animations
