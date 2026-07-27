@@ -1,0 +1,456 @@
+# HeapVortex - Main Application Component
+
+## Overview
+
+This file serves as the main entry point of the **HeapVortex** application. It combines a real-time 3D heap visualization with an interactive telemetry dashboard, providing users with an immersive JVM memory profiling experience.
+
+The application is built using **React**, **TypeScript**, **React Three Fiber**, **Three.js**, and **Tailwind CSS** to create a modern and responsive interface.
+
+---
+
+## Features
+
+- Full-screen interactive 3D visualization
+- Real-time heap object rendering
+- Orbit camera controls for navigation
+- Dynamic star-field background
+- Realistic lighting effects
+- Live telemetry sidebar
+- JVM connection status indicator
+- Bottom HUD displaying heap statistics
+- Loading indicator while 3D assets initialize
+- Responsive overlay UI using Tailwind CSS
+
+---
+
+## Project Structure
+
+```
+src/
+│
+├── App.tsx
+├── features/
+│   ├── 3d-view/
+│   │   └── components/
+│   │       └── HeapScene.tsx
+│   │
+│   └── telemetry/
+│       └── components/
+│           └── TelemetrySidebar.tsx
+```
+
+---
+
+## Technologies Used
+
+- React
+- TypeScript
+- Three.js
+- React Three Fiber
+- React Drei
+- Tailwind CSS
+
+---
+
+## Component Architecture
+
+### App Component
+
+The `App` component acts as the root container of the application and manages the overall layout.
+
+It consists of three major sections:
+
+### 1. 3D Visualization Layer
+
+Responsible for rendering the interactive JVM heap scene.
+
+Includes:
+
+- Canvas
+- Perspective Camera
+- Orbit Controls
+- Stars Environment
+- Ambient Light
+- Point Light
+- Spot Light
+- HeapScene Component
+
+---
+
+### 2. UI Overlay Layer
+
+Displays interactive dashboard components above the 3D canvas.
+
+Contains:
+
+- Application Header
+- Telemetry Sidebar
+- JVM Agent Status
+- Heap Statistics HUD
+
+---
+
+### 3. Loader
+
+Displays loading progress while the 3D scene initializes.
+
+---
+
+## Layout Strategy
+
+The application uses layered positioning for a clean visualization experience.
+
+```
++-----------------------------------------------------+
+|                  UI Overlay Layer                   |
+|                                                     |
+|  Sidebar      Status Panel        Bottom HUD        |
+|                                                     |
++-----------------------------------------------------+
+
+                ▲
+
++-----------------------------------------------------+
+|                3D Canvas Layer                      |
+|                                                     |
+|        Heap Objects + Camera + Lighting             |
+|                                                     |
++-----------------------------------------------------+
+```
+
+---
+
+## Camera Configuration
+
+| Property | Value |
+|----------|-------|
+| Type | Perspective Camera |
+| Position | (0, 5, 15) |
+| Field of View | 75° |
+
+Users can freely rotate, zoom, and inspect the heap visualization using OrbitControls.
+
+---
+
+## Lighting Setup
+
+The application uses multiple light sources to enhance scene realism.
+
+### Ambient Light
+
+Provides soft illumination across the entire scene.
+
+### Point Light
+
+Simulates a directional light source with shadow support.
+
+### Spot Light
+
+Adds focused illumination to emphasize heap structures.
+
+---
+
+## UI Components
+
+### Telemetry Sidebar
+
+Displays live JVM telemetry information, including:
+
+- Heap usage
+- Memory allocation
+- JVM metrics
+- Performance statistics
+
+---
+
+### Connection Status
+
+Shows the runtime connection state of the JVM Agent.
+
+Example:
+
+```
+Agent Connected: PID 12408
+```
+
+---
+
+### Bottom HUD
+
+Displays quick heap statistics.
+
+Example metrics:
+
+- Total Objects
+- Heap Used
+- GC Pause Time
+
+---
+
+## Reusable Components
+
+### StatItem
+
+A reusable component used for displaying statistics consistently throughout the application.
+
+Properties:
+
+| Prop | Description |
+|------|-------------|
+| label | Metric name |
+| value | Metric value |
+
+Example:
+
+```
+Objects
+12,402
+```
+
+---
+
+## Key Functionalities
+
+- Interactive 3D heap visualization
+- Real-time telemetry monitoring
+- Modern dashboard interface
+- Camera navigation
+- Scene lighting
+- Live JVM status
+- Responsive layout
+- Modular React component architecture
+
+---
+
+## Future Enhancements
+
+- Live JVM agent integration
+- Heap snapshot comparison
+- Object filtering
+- Search functionality
+- Garbage collection animation
+- Memory leak detection
+- Performance timeline
+- Dark/Light themes
+- Object relationship visualization
+
+---
+
+# Assets Directory
+
+This directory contains all the static resources used by the frontend application.
+
+## Folder Structure
+
+```
+assets/
+├── images/
+├── icons/
+├── fonts/
+├── styles/
+└── README.md
+```
+
+## Contents
+
+- **images/** – Application images, illustrations, and logos.
+- **icons/** – SVG and PNG icons used across the UI.
+- **fonts/** – Custom font files used in the project.
+- **styles/** – Global styles, CSS modules, or theme-related files.
+
+## Guidelines
+
+- Use descriptive file names (e.g., `dashboard-banner.png`, `user-avatar.svg`).
+- Optimize images before adding them to reduce bundle size.
+- Store reusable assets only; page-specific assets should be placed near their respective components when appropriate.
+- Remove unused assets regularly to keep the project organized.
+
+## Supported File Types
+
+- Images: `.png`, `.jpg`, `.jpeg`, `.svg`, `.webp`
+- Icons: `.svg`, `.png`
+- Fonts: `.ttf`, `.woff`, `.woff2`
+- Styles: `.css`, `.scss`
+
+## Usage Example
+
+```jsx
+import logo from "../assets/images/logo.png";
+
+function Header() {
+  return <img src={logo} alt="HeapVortex Logo" />;
+}
+```
+
+# Utils Directory
+
+## Overview
+
+The `utils` directory contains reusable utility functions and helper modules used throughout the HeapVortex application. These functions perform common operations such as data formatting, validation, calculations, API helpers, and other shared logic to reduce code duplication and improve maintainability.
+
+## Directory Structure
+
+```
+utils/
+├── api.js
+├── validation.js
+├── formatter.js
+├── constants.js
+└── README.md
+```
+
+## Contents
+
+- **api.js** – Contains helper functions for making API requests and handling responses.
+- **validation.js** – Includes functions for validating user input such as email, password, and form fields.
+- **formatter.js** – Provides utilities for formatting dates, numbers, currency, and strings.
+- **constants.js** – Stores reusable constants and configuration values used across the application.
+
+## Usage Example
+
+```javascript
+import { formatDate } from "./formatter";
+import { validateEmail } from "./validation";
+
+const date = formatDate(new Date());
+const isValid = validateEmail("user@example.com");
+
+console.log(date);
+console.log(isValid);
+```
+
+## Best Practices
+
+- Keep utility functions small and reusable.
+- Avoid storing component-specific logic in this folder.
+- Write pure functions whenever possible.
+- Group related helper functions into separate files.
+- Document complex utility functions with comments.
+
+## Benefits
+
+- Promotes code reusability.
+- Reduces code duplication.
+- Improves project organization.
+- Makes the application easier to maintain and scale.
+
+---
+
+# 🚀 Full Stack Web Application
+
+A modern full-stack web application built with React for the frontend and Node.js/Express for the backend. This project provides a responsive user interface, secure API communication, and a scalable architecture for future enhancements.
+
+---
+
+## 📌 Overview
+
+This application demonstrates a complete full-stack development workflow, including:
+
+- Responsive and user-friendly interface
+- RESTful API integration
+- Modular project structure
+- Reusable components and utility functions
+- Easy deployment and maintenance
+
+---
+
+## ✨ Features
+
+- User Authentication
+- Dashboard Interface
+- API Integration
+- Responsive Design
+- Form Validation
+- Error Handling
+- Reusable Components
+- Local Storage Support
+- Modular Folder Structure
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- React.js
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+
+### Version Control
+- Git
+- GitHub
+
+---
+
+## 📂 Project Structure
+
+```
+project/
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   ├── utils/
+│   └── App.js
+│
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd your-repository
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+---
+
+## 🎯 Future Improvements
+
+- JWT Authentication
+- Role-Based Access Control
+- Email Notifications
+- Dark Mode
+- Unit Testing
+- Docker Support
+- Cloud Deployment
+
+---
+

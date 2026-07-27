@@ -268,52 +268,31 @@ React Frontend
 - Three.js
 
 ---
-# useMemoryData Hook
+# HeapVortex Frontend
 
 ## Overview
-The `useMemoryData` hook is a custom React hook used to manage JVM memory data in the HeapVortex application.
-
-## Purpose
-It provides memory statistics that can be displayed on the dashboard.
-
-## Returned Data
-- Used Memory
-- Free Memory
-- Total Memory
-- Max Memory
-- Leak Status
+HeapVortex is a React-based application that visualizes JVM memory usage through an interactive and user-friendly dashboard. It provides real-time insights into memory statistics and helps monitor application performance.
 
 ## Features
-- Uses React Hooks (`useState` and `useEffect`)
-- Simulates real-time memory updates
-- Easy to connect with backend APIs in the future
-- Reusable across multiple components
+- Responsive React-based user interface
+- Displays JVM memory statistics
+- Reusable React components
+- Easy integration with backend APIs
+- Scalable project structure
 
-## Future Enhancements
-- Fetch live JVM data from backend
-- Support WebSocket updates
-- Error handling
-- Loading state
+## useMemoryData Hook
+The `useMemoryData` hook is a custom React hook that manages JVM memory data using React Hooks (`useState` and `useEffect`). It provides memory statistics such as used, free, total, and maximum memory while supporting future backend integration.
 
-# Memory Service
-
-## Overview
-The Memory Service is responsible for communicating with the backend API to retrieve JVM memory statistics.
-
-## Purpose
-This service acts as a bridge between the frontend and backend by fetching memory-related information.
-
-## Features
-- Fetches JVM memory data from REST API
-- Handles API errors gracefully
-- Returns fallback dummy data during development
-- Easy to reuse across multiple React components
+## Memory Service
+The Memory Service communicates with the backend REST API to retrieve JVM memory statistics. During development, it can return mock data and is designed for future real-time API integration.
 
 ## API Endpoint
 
+```http
 GET /api/memory
+```
 
-## Returned Data
+## Sample Response
 
 ```json
 {
@@ -324,10 +303,10 @@ GET /api/memory
   "leakStatus": "Normal"
 }
 ```
-## Future Enhancements
 
-- Connect with live backend APIs
-- Add graphical memory usage visualization
-- Implement real-time dashboard updates
-- Generate detailed memory analysis reports
-- Improve UI with responsive design and animations
+## Future Enhancements
+- Live JVM monitoring
+- WebSocket-based real-time updates
+- Graphical memory usage visualization
+- Error handling and loading states
+- Performance optimization
