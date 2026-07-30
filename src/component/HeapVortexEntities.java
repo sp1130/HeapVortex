@@ -52,7 +52,13 @@ class HeapDump {
     private String filePath;
     private Long fileSize;
     private String status;
-    private LocalDateTime createdAt;
+  private LocalDateTime createdAt;
+
+  @PrePersist
+  public void onCreate() 
+  {
+    this.createdAt = LocalDateTime.now();
+  }
 
     @ManyToOne
     @JoinColumn(name = "jvm_process_id")
